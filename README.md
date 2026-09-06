@@ -14,7 +14,7 @@ Alguns experimentos com o ESP32.
    Sem uso ---------| GPIO 34             RX0 |--- GPIO  3 -- Serial USB
    Sem uso ---------| GPIO 35             D21 |--- GPIO 21 -- OLED SDA
    Sem uso ---------| GPIO 32             D19 |--- GPIO 19 -- DHT11 DATA
-   Sem uso ---------| GPIO 33             D18 |--- GPIO 18 -- Botao
+   Sem uso ---------| GPIO 33             D18 |--- GPIO 18 -- Botão
    Sem uso ---------| GPIO 25              D5 |--- GPIO  5 -- Sem uso
    Sem uso ---------| GPIO 26             TX2 |--- GPIO 17 -- Sem uso
    Sem uso ---------| GPIO 27             RX2 |--- GPIO 16 -- Sem uso
