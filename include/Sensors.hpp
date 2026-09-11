@@ -4,6 +4,7 @@ namespace Sensors {
     struct Reading {
         float temperature;
         float humidity;
+        float chipTemperature;
     };
 
     void begin();

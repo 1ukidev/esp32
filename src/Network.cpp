@@ -22,15 +22,25 @@ namespace {
                "<meta charset=\"utf-8\"><meta http-equiv=\"refresh\" content=\"";
         page += String(Config::pageRefreshSeconds);
         page += "\">"
-                "<title>ESP32</title></head><body><h1>Sensores</h1>"
-                "<p>Temperatura: ";
-        page += String(reading.temperature, 1);
-        page += " &deg;C</p><p>Umidade: ";
-        page += String(reading.humidity, 1);
-        page += " %</p><p>PIR: ";
+                "<title>ESP32</title></head><body><h1>Sensores</h1>";
+        if (Config::dhtEnabled) {
+            page += "<p>Temperatura: ";
+            page += String(reading.temperature, 1);
+            page += " &deg;C</p><p>Umidade: ";
+            page += String(reading.humidity, 1);
+            page += " %</p>";
+        } else {
+            page += "<p>DHT11 desativado</p>";
+        }
+        page += "<p>PIR: ";
         page += Motion::getStatusText(Motion::getState());
-        page += "</p><h1>ESP32</h1><p>CPU: ";
-        page += ESP.getChipModel();
+        page += "</p><h1>ESP32</h1><p>Temperatura interna do chip: ";
+        if (isfinite(reading.chipTemperature)) {
+            page += String(reading.chipTemperature, 1);
+            page += " &deg;C";
+        } else {
+            page += "Indisponivel";
+        }
         page += "</p><p>Freq: ";
         page += String(ESP.getCpuFreqMHz());
         page += " MHz</p><p>RAM: ";

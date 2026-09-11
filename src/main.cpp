@@ -9,9 +9,6 @@
 #include "Screen.hpp"
 
 void setup() {
-    pinMode(Config::ledPin, OUTPUT);
-    digitalWrite(Config::ledPin, HIGH);
-
     Serial.begin(Config::serialBaudRate);
     Serial.println("Iniciando...");
     Sensors::begin();

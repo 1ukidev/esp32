@@ -91,14 +91,18 @@ void Screen::update(bool newReading) {
         display.println("=== SENSORES ===");
 
         display.setCursor(0, 18);
-        display.print("Temperatura: ");
-        display.print(reading.temperature, 1);
-        display.println(" C");
+        if (Config::dhtEnabled) {
+            display.print("Temperatura: ");
+            display.print(reading.temperature, 1);
+            display.println(" C");
 
-        display.setCursor(0, 32);
-        display.print("Umidade: ");
-        display.print(reading.humidity, 1);
-        display.println(" %");
+            display.setCursor(0, 32);
+            display.print("Umidade: ");
+            display.print(reading.humidity, 1);
+            display.println(" %");
+        } else {
+            display.println("DHT11 desativado");
+        }
 
         display.setCursor(0, 46);
         display.print("PIR: ");
@@ -108,8 +112,13 @@ void Screen::update(bool newReading) {
         display.println("=== ESP32 ===");
 
         display.setCursor(0, 18);
-        display.print("CPU: ");
-        display.println(ESP.getChipModel());
+        display.print("Temp. chip: ");
+        if (isfinite(reading.chipTemperature)) {
+            display.print(reading.chipTemperature, 1);
+            display.println(" C");
+        } else {
+            display.println("N/D");
+        }
 
         display.setCursor(0, 32);
         display.print("Freq: ");

@@ -41,6 +41,7 @@ namespace Config {
     constexpr unsigned int sdaPin = 21;
     constexpr unsigned int sclPin = 22;
     constexpr unsigned int dhtPin = 19;
+    constexpr bool dhtEnabled = false;
     constexpr unsigned int buttonPin = 18;
     constexpr unsigned int pirPin = 14;
     constexpr unsigned int ledPin = 2;
