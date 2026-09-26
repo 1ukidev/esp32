@@ -65,9 +65,13 @@ void Screen::update(bool newReading) {
         refreshPending = true;
     }
 
-    if (motionState == Motion::State::WarmingUp || motionState == Motion::State::Detected) {
+    const bool motionActive = Config::pirEnabled &&
+        (motionState == Motion::State::WarmingUp || motionState == Motion::State::Detected);
+
+    if (motionActive) {
         wakeDisplay();
-    } else if (screenOn && millis() - lastActivity >= Config::screenTimeout) {
+    } else if (Config::screenTimeoutEnabled && screenOn &&
+               millis() - lastActivity >= Config::screenTimeout) {
         display.ssd1306_command(SSD1306_DISPLAYOFF);
         screenOn = false;
     }
@@ -105,8 +109,12 @@ void Screen::update(bool newReading) {
         }
 
         display.setCursor(0, 46);
-        display.print("PIR: ");
-        display.println(Motion::getStatusText(motionState));
+        if (Config::pirEnabled) {
+            display.print("PIR: ");
+            display.println(Motion::getStatusText(motionState));
+        } else {
+            display.println("PIR desativado");
+        }
     } else {
         display.setCursor(0, 0);
         display.println("=== ESP32 ===");

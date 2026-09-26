@@ -11,7 +11,8 @@ namespace Config {
     constexpr bool dhtEnabled = false;
     constexpr unsigned int buttonPin = 18;
     constexpr unsigned int pirPin = 14;
-    constexpr unsigned int ledPin = 2;
+    constexpr bool pirEnabled = false;
+    constexpr unsigned int ledPin = 12;
     constexpr unsigned int buzzerPin = 13;
     constexpr unsigned int buzzerChannel = 2;
     constexpr unsigned int buzzerFrequency = 2000;
@@ -21,6 +22,7 @@ namespace Config {
     constexpr unsigned long pirWarmupDuration = 60000;
     constexpr unsigned long pirClearDelay = 3000;
     constexpr unsigned long screenTimeout = 30000;
+    constexpr bool screenTimeoutEnabled = false;
     constexpr unsigned long buttonDebounce = 50;
     constexpr unsigned long reconnectInterval = 15000;
     constexpr unsigned long serverRetryInterval = 5000;

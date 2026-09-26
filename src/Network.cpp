@@ -32,9 +32,14 @@ namespace {
         } else {
             page += "<p>DHT11 desativado</p>";
         }
-        page += "<p>PIR: ";
-        page += Motion::getStatusText(Motion::getState());
-        page += "</p><h1>ESP32</h1><p>Temperatura interna do chip: ";
+        if (Config::pirEnabled) {
+            page += "<p>PIR: ";
+            page += Motion::getStatusText(Motion::getState());
+            page += "</p>";
+        } else {
+            page += "<p>PIR desativado</p>";
+        }
+        page += "<h1>ESP32</h1><p>Temperatura interna do chip: ";
         if (isfinite(reading.chipTemperature)) {
             page += String(reading.chipTemperature, 1);
             page += " &deg;C";

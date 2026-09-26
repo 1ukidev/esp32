@@ -19,7 +19,7 @@ Alguns experimentos com o ESP32.
    Sem uso ---------| GPIO 26             TX2 |--- GPIO 17 -- Sem uso
    Sem uso ---------| GPIO 27             RX2 |--- GPIO 16 -- Sem uso
 PIR OUT ------------| GPIO 14              D4 |--- GPIO  4 -- Sem uso
-   Sem uso ---------| GPIO 12              D2 |--- GPIO  2 -- LED da placa
+   LED (+) ---------| GPIO 12              D2 |--- GPIO  2 -- LED da placa
 Buzzer (+) ---------| GPIO 13             D15 |--- GPIO 15 -- Sem uso
 GND comum ----------| GND                 GND |--- GND comum
 PIR VCC ------------| VIN                 3V3 |--- Alimentação 3.3 V
@@ -44,7 +44,8 @@ namespace Config {
     constexpr bool dhtEnabled = false;
     constexpr unsigned int buttonPin = 18;
     constexpr unsigned int pirPin = 14;
-    constexpr unsigned int ledPin = 2;
+    constexpr bool pirEnabled = false;
+    constexpr unsigned int ledPin = 12;
     constexpr unsigned int buzzerPin = 13;
     constexpr unsigned int buzzerChannel = 2;
     constexpr unsigned int buzzerFrequency = 2000;
@@ -54,6 +55,7 @@ namespace Config {
     constexpr unsigned long pirWarmupDuration = 60000;
     constexpr unsigned long pirClearDelay = 3000;
     constexpr unsigned long screenTimeout = 30000;
+    constexpr bool screenTimeoutEnabled = false;
     constexpr unsigned long buttonDebounce = 50;
     constexpr unsigned long reconnectInterval = 15000;
     constexpr unsigned long serverRetryInterval = 5000;

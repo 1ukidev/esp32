@@ -12,12 +12,20 @@ namespace {
 }
 
 void Motion::begin() {
+    if (!Config::pirEnabled) {
+        return;
+    }
+
     pinMode(Config::pirPin, INPUT);
     startedAt = millis();
     Serial.println("PIR em estabilização por 60 segundos.");
 }
 
 void Motion::update() {
+    if (!Config::pirEnabled) {
+        return;
+    }
+
     const unsigned long now = millis();
     const State previousState = getState();
     if (previousState == State::WarmingUp &&

@@ -11,6 +11,10 @@
 void setup() {
     Serial.begin(Config::serialBaudRate);
     Serial.println("Iniciando...");
+
+    pinMode(Config::ledPin, OUTPUT);
+    analogWrite(Config::ledPin, 8);
+
     Sensors::begin();
     Button::begin();
     Motion::begin();
